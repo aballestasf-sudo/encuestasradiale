@@ -1,0 +1,27 @@
+-- Consulta 1: Programas emitidos en la última semana
+SELECT nombre_programa, fecha_emision, duracion
+FROM programas
+WHERE fecha_emision >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
+
+
+-- Consulta 2: Número total de encuestas realizadas
+SELECT COUNT(*) AS total_encuestas
+FROM encuestas;
+
+-- Consulta 3: Radios y frecuencias
+SELECT nombre_radio, frecuencia
+FROM radios
+ORDER BY frecuencia ASC;
+
+-- Consulta 4: Programa más popular
+SELECT p.nombre_programa, COUNT(e.id_encuesta) AS total_encuestados
+FROM programas p
+JOIN encuestas e ON p.id_programa = e.id_programa
+GROUP BY p.nombre_programa
+ORDER BY total_encuestados DESC
+LIMIT 1;
+
+-- Consulta 5: Duración promedio de programas
+SELECT AVG(duracion) AS duracion_promedio
+FROM programas;
+

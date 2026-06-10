@@ -5,7 +5,7 @@ import co.edu.udec.encuestasradiales.domain.enums.GeneroPrograma;
 import co.edu.udec.encuestasradiales.domain.exceptions.ProgramaException;
 
 public class Programa {private final ProgramaId id;
-    private String nombre;
+    private final String nombre;
     private GeneroPrograma genero;
 
     public Programa(ProgramaId id, String nombre, GeneroPrograma genero) {
